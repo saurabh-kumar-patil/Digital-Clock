@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title> Clock </title>
+    <link rel="stylesheet" href="style.css">
+
+</head>
+
+<body>
+    <!-- navBar -->
+    <nav>
+        <!-- <a href="javascript:void(0)"></a> -->
+        <a href="#Home">Home</a>
+        <a href="#Home">About</a>
+        <a href="#Home">Contact</a>
+        <div id="search">
+            <input type="search" placeholder="Search..">
+            <button id="searchbtn">Search</button>
+        </div>
+    </nav>
+
+    <div class="TimeContainer">
+        <h1>Current Time is : <span id="time"></span></h1>
+        <hr>
+        <input type="time" id="settime">
+        <button class="btn" onclick="setAlarm()">Add </button>
+        <button class="btn" onclick="deleteAlarm()">Delete </button>
+        <audio id="myAudio">
+            <source src="bird_sound.wav">
+            <source src="alarm_sound.wav">
+        </audio>
+    </div>
+
+    <script>
+        let a;
+        let date; 
+        let time;
+        const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+        setInterval(() => {
+            a = new Date();
+            date = a.toLocaleDateString(undefined, options);
+            time = a.getHours() + ":" + a.getMinutes() + ":" + a.getSeconds();
+            document.getElementById('time').innerHTML = time + "<br>" + date;
+        }, 1000);
+
+        let deleteAlarm;
+
+        function setAlarm() {
+            const a = document.getElementById("settime");
+            let filtertime = a.value;
+            const a_time_in_Mili = ((filtertime[0] + filtertime[1]) * 60 * 60 * 1000) + ((filtertime[3] + filtertime[4]) * 60 * 1000);
+            const d = new Date();
+            const currenttime_in_mili = (d.getHours() * 60 * 60 * 1000) + (d.getMinutes() * 60 * 1000);
+            let Alarm = 0;
+            if (a_time_in_Mili < currenttime_in_mili) {
+                const t = 86400000 - currenttime_in_mili;
+                // for next day 
+                Alarm = t + a_time_in_Mili;
+            } else {
+                Alarm = a_time_in_Mili - currenttime_in_mili;
+            }
+
+            deleteAlarm = setTimeout(() => {
+                console.log("settime function is working fine ");
+                let x = document.getElementById("myAudio");
+                x.play();
+            }, Alarm);
+        }
+
+        // function deleteAlarm(){
+        //     clearTimeout(deleteAlarm);
+        // }
+
+    </script>
+
+</body>
+
+</html>

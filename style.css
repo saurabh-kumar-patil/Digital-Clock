@@ -1,0 +1,91 @@
+*{
+    margin: 0px;
+    padding: 0px;
+    box-sizing: border-box;
+}
+nav{
+    position: relative;
+    width: 100%;
+    height: 50px;
+    background-color: rgba(0, 0, 0, 0.479);
+ }
+ 
+nav  a{
+    text-decoration: none;
+    float: left;
+    margin: 10px;
+    font-size: 25px;
+    color: rgb(9, 10, 9);
+}
+nav a:hover{
+    background-color: yellowgreen;
+    color: white;
+}
+#search{
+    float: right;
+}
+nav input{
+    /* width: 450px; */
+    width: 300px;
+    height: 35px;
+    margin-top: 7px;
+    font-size: 15px;
+    border: none;
+    border-radius: 6px;
+}
+nav input:hover{
+    outline: 2px solid rgb(74, 189, 243);
+    outline-color: rgb(77, 152, 236);
+}
+#searchbtn{
+    width: 60px;
+    height: 30px;
+    border-radius: 5px;
+    margin-right: 10px;
+}
+
+#searchbtn:hover{
+    background-color: rgb(23, 134, 23);
+    color: white;
+}
+
+@media  screen and (max-width:650px) {
+    nav{
+        height: 120px;
+    }
+    nav a{
+        display: flex;
+        justify-content:space-around;
+        align-items: center;
+        float: none;
+    }
+    #search{
+        display: none;
+    }
+}
+body{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.TimeContainer{
+    border: 3px solid rgb(42, 155, 230);
+    border-radius: 4px;
+    width: 50vw;
+    height: 50vh;
+    padding: 20px 50px;
+}
+#settime{
+    /* display: block; */
+    width: 11vw;
+    height: 6vh;
+    font-size: 18px;
+    margin: 10px 0px;
+}
+.btn{
+    display: inline-block;
+    width: 11vw;
+    height: 6vh;
+    font-size: 18px;
+    margin: 10px 0px;
+}
